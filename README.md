@@ -10,9 +10,18 @@ in typical mode
 ```sh
 fastapi run main.py
 ```
+or
+```sh
+fastapi run main.py --port $PORT
+```
+
 in dev mode
 ```sh
 fastapi dev main.py
+```
+or 
+```sh
+fastapi dev main.py --port $PORT
 ```
 
 ### Testing

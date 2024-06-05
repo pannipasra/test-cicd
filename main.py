@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/health")
 async def check_health():
-    return {"message", "Hello World!"}
+    return {"msg": "Hello World"}
 
 @app.post("/files/")
 async def create_files(

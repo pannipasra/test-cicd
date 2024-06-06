@@ -10,6 +10,10 @@ app = FastAPI()
 async def check_health():
     return {"msg": "Hello World"}
 
+@app.get("/ping")
+async def ping():
+    return "pong"
+
 @app.post("/files/")
 async def create_files(
     files: Annotated[List[bytes], File(description="Multiple files as bytes")],

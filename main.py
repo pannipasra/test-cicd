@@ -1,3 +1,4 @@
+import os
 from typing import List
 
 from fastapi import FastAPI, File, UploadFile
@@ -30,7 +31,6 @@ async def create_upload_files(
 ):
     """This function can receive multi-files"""
     return {"filenames": [file.filename for file in files]}
-
 
 @app.get("/")
 async def main():

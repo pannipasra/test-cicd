@@ -1,4 +1,4 @@
-## Test for CI/CD [UPDATE 9:31 06/06/2024]
+## Test for CI/CD [UPDATE 11:15 06/06/2024]
 
 ### How to run
 first have to enter `./app`

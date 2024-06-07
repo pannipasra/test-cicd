@@ -3,7 +3,6 @@
 # ======================================================
 import os
 import io
-import pytest
 from .main import app
 from fastapi.testclient import TestClient
 
@@ -20,18 +19,6 @@ def test_read_pong():
     response = client.get("/ping")
     assert response.status_code == 200
     assert response.json() == "pong"
-
-
-@pytest.fixture
-def sample_files():
-    with open("test_file1.txt", "w") as f:
-        f.write("This is a test file 1")
-    # Always yield the list of filenames
-    filenames = ["test_file1.txt"]
-    yield filenames
-    # Cleanup after the test execution (optional)
-    for f in filenames:
-        os.remove(f)  # Import os if needed
 
 def _file():
     name = "test_file1.txt"

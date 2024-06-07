@@ -1,27 +1,27 @@
-name: acr-ci
-on: 
-  push:
-    branches: [ "main" ]
+# name: acr-ci
+# on: 
+#   push:
+#     branches: [ "main" ]
     
-jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        steps:
-        # checkout the repo
-        - name: 'Checkout GitHub Action'
-          uses: actions/checkout@main
+# jobs:
+#     build-and-deploy:
+#         runs-on: ubuntu-latest
+#         steps:
+#         # checkout the repo
+#         - name: 'Checkout GitHub Action'
+#           uses: actions/checkout@main
           
-        - name: 'Login via Azure CLI'
-          uses: azure/login@v1
-          with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
+#         - name: 'Login via Azure CLI'
+#           uses: azure/login@v1
+#           with:
+#             creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-        - name: 'Build and push image'
-          uses: azure/docker-login@v1
-          with:
-            login-server: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}
-            username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
-            password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
-        - run: |
-            docker build . -t ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
-            docker push ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+#         - name: 'Build and push image'
+#           uses: azure/docker-login@v1
+#           with:
+#             login-server: ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}
+#             username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
+#             password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+#         - run: |
+#             docker build . -t ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/${{ github.event.repository.name }}:${{ github.sha }}
+#             docker push ${{ secrets.AZURE_REGISTRY_LOGIN_SERVER }}/${{ github.event.repository.name }}:${{ github.sha }}
